@@ -26,7 +26,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // httpJSONResponseElement implements driver.Response for an entry of an array response.

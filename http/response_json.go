@@ -29,7 +29,7 @@ import (
 	"reflect"
 	"strings"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // httpJSONResponse implements driver.Response for standard golang JSON encoded http responses.
@@ -159,6 +159,10 @@ func decodeObjectFields(objValue reflect.Value, body map[string]*json.RawMessage
 	for i := 0; i != objValue.NumField(); i++ {
 		f := objValueType.Field(i)
 		if f.Anonymous && f.Type.Kind() == reflect.Struct {
+			jsonName := strings.Split(f.Tag.Get("json"), ",")[0]
+			if jsonName == "-" {
+				continue
+			}
 			// Recurse into fields of anonymous field
 			if err := decodeObjectFields(objValue.Field(i), body); err != nil {
 				return driver.WithStack(err)

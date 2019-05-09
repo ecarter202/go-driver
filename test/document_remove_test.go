@@ -27,7 +27,7 @@ import (
 	"reflect"
 	"testing"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // TestReplaceDocument creates a document, remove it and then checks the removal has succeeded.

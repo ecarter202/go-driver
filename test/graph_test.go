@@ -26,7 +26,7 @@ import (
 	"context"
 	"testing"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // ensureGraph is a helper to check if a graph exists and create if if needed.

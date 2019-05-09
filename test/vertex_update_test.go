@@ -27,7 +27,7 @@ import (
 	"reflect"
 	"testing"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // TestUpdateVertex creates a document, updates it and then checks the update has succeeded.

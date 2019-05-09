@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // TestReplicationDatabaseInventory tests the Replication.DatabaseInventory method.

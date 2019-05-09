@@ -27,8 +27,8 @@ import (
 	"log"
 	"fmt"
 
-	driver "github.com/arangodb/go-driver"
-	"github.com/arangodb/go-driver/http"
+	driver "github.com/ecarter202/go-driver"
+	"github.com/ecarter202/go-driver/http"
 )
 
 type MyObject struct {

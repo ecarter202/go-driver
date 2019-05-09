@@ -27,7 +27,7 @@ import (
 	"fmt"
 	"testing"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // ensureArangoSearchView is a helper to check if an arangosearch view exists and create it if needed.

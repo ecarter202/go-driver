@@ -37,10 +37,10 @@ import (
 
 	_ "net/http/pprof"
 
-	driver "github.com/arangodb/go-driver"
-	"github.com/arangodb/go-driver/http"
-	"github.com/arangodb/go-driver/vst"
-	"github.com/arangodb/go-driver/vst/protocol"
+	driver "github.com/ecarter202/go-driver"
+	"github.com/ecarter202/go-driver/http"
+	"github.com/ecarter202/go-driver/vst"
+	"github.com/ecarter202/go-driver/vst/protocol"
 )
 
 var (

@@ -25,7 +25,7 @@ package test
 import (
 	"testing"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // TestImportDocumentsWithKeys imports documents and then checks that it exists.

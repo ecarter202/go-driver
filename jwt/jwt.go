@@ -23,7 +23,7 @@
 package jwt
 
 import (
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 	jg "github.com/dgrijalva/jwt-go"
 )
 

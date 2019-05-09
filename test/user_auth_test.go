@@ -29,7 +29,7 @@ import (
 	"testing"
 	"time"
 
-	driver "github.com/arangodb/go-driver"
+	driver "github.com/ecarter202/go-driver"
 )
 
 // TestUpdateUserPasswordMyself creates a user and tries to update the password of the authenticated user.

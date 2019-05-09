@@ -27,8 +27,8 @@ import (
 	"testing"
 	"time"
 
-	driver "github.com/arangodb/go-driver"
-	"github.com/arangodb/go-driver/agency"
+	driver "github.com/ecarter202/go-driver"
+	"github.com/ecarter202/go-driver/agency"
 )
 
 // TestAgencyLock tests the agency.Lock interface.
