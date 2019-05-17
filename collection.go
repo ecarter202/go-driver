@@ -78,15 +78,15 @@ type Collection interface {
 // CollectionInfo contains information about a collection
 type CollectionInfo struct {
 	// The identifier of the collection.
-	ID string `arango:"id,omitempty"`
+	ID string `arango:"id,omitempty" json:"id,omitempty"`
 	// The name of the collection.
-	Name string `arango:"name,omitempty"`
+	Name string `arango:"name,omitempty" json:"name,omitempty"`
 	// The status of the collection
-	Status CollectionStatus `arango:"status,omitempty"`
+	Status CollectionStatus `arango:"status,omitempty" json:"status,omitempty"`
 	// The type of the collection
-	Type CollectionType `arango:"type,omitempty"`
+	Type CollectionType `arango:"type,omitempty" json:"type,omitempty"`
 	// If true then the collection is a system collection.
-	IsSystem bool `arango:"isSystem,omitempty"`
+	IsSystem bool `arango:"isSystem,omitempty" json:"isSystem,omitempty"`
 }
 
 // CollectionProperties contains extended information about a collection.
@@ -94,35 +94,35 @@ type CollectionProperties struct {
 	CollectionInfo
 
 	// WaitForSync; If true then creating, changing or removing documents will wait until the data has been synchronized to disk.
-	WaitForSync bool `arango:"waitForSync,omitempty"`
+	WaitForSync bool `arango:"waitForSync,omitempty" json:"waitForSync,omitempty"`
 	// DoCompact specifies whether or not the collection will be compacted.
-	DoCompact bool `arango:"doCompact,omitempty"`
+	DoCompact bool `arango:"doCompact,omitempty" json:"doCompact,omitempty"`
 	// JournalSize is the maximal size setting for journals / datafiles in bytes.
-	JournalSize int64 `arango:"journalSize,omitempty"`
+	JournalSize int64 `arango:"journalSize,omitempty" json:"journalSize,omitempty"`
 	KeyOptions  struct {
 		// Type specifies the type of the key generator. The currently available generators are traditional and autoincrement.
-		Type KeyGeneratorType `arango:"type,omitempty"`
+		Type KeyGeneratorType `arango:"type,omitempty" json:"type,omitempty"`
 		// AllowUserKeys; if set to true, then it is allowed to supply own key values in the _key attribute of a document.
 		// If set to false, then the key generator is solely responsible for generating keys and supplying own key values in
 		// the _key attribute of documents is considered an error.
-		AllowUserKeys bool `arango:"allowUserKeys,omitempty"`
-	} `arango:"keyOptions,omitempty"`
+		AllowUserKeys bool `arango:"allowUserKeys,omitempty" json:"allowUserKeys,omitempty"`
+	} `arango:"keyOptions,omitempty" json:"keyOptions,omitempty"`
 	// NumberOfShards is the number of shards of the collection.
 	// Only available in cluster setup.
-	NumberOfShards int `arango:"numberOfShards,omitempty"`
+	NumberOfShards int `arango:"numberOfShards,omitempty" json:"numberOfShards,omitempty"`
 	// ShardKeys contains the names of document attributes that are used to determine the target shard for documents.
 	// Only available in cluster setup.
-	ShardKeys []string `arango:"shardKeys,omitempty"`
+	ShardKeys []string `arango:"shardKeys,omitempty" json:"shardKeys,omitempty"`
 	// ReplicationFactor contains how many copies of each shard are kept on different DBServers.
 	// Only available in cluster setup.
-	ReplicationFactor int `arango:"replicationFactor,omitempty"`
+	ReplicationFactor int `arango:"replicationFactor,omitempty" json:"replicationFactor,omitempty"`
 	// SmartJoinAttribute
 	// See documentation for smart joins.
 	// This requires ArangoDB Enterprise Edition.
-	SmartJoinAttribute string `arango:"smartJoinAttribute,omitempty"`
+	SmartJoinAttribute string `arango:"smartJoinAttribute,omitempty" json:"smartJoinAttribute,omitempty"`
 	// This attribute specifies the name of the sharding strategy to use for the collection.
 	// Can not be changed after creation.
-	ShardingStrategy ShardingStrategy `arango:"shardingStrategy,omitempty"`
+	ShardingStrategy ShardingStrategy `arango:"shardingStrategy,omitempty" json:"shardingStrategy,omitempty"`
 }
 
 const (
@@ -138,12 +138,12 @@ func (p *CollectionProperties) IsSatellite() bool {
 // SetCollectionPropertiesOptions contains data for Collection.SetProperties.
 type SetCollectionPropertiesOptions struct {
 	// If true then creating or changing a document will wait until the data has been synchronized to disk.
-	WaitForSync *bool `arango:"waitForSync,omitempty"`
+	WaitForSync *bool `arango:"waitForSync,omitempty" json:"waitForSync,omitempty"`
 	// The maximal size of a journal or datafile in bytes. The value must be at least 1048576 (1 MB). Note that when changing the journalSize value, it will only have an effect for additional journals or datafiles that are created. Already existing journals or datafiles will not be affected.
-	JournalSize int64 `arango:"journalSize,omitempty"`
+	JournalSize int64 `arango:"journalSize,omitempty" json:"journalSize,omitempty"`
 	// ReplicationFactor contains how many copies of each shard are kept on different DBServers.
 	// Only available in cluster setup.
-	ReplicationFactor int `arango:"replicationFactor,omitempty"`
+	ReplicationFactor int `arango:"replicationFactor,omitempty" json:"replicationFactor,omitempty"`
 }
 
 // CollectionStatus indicates the status of a collection.
@@ -161,15 +161,15 @@ const (
 // CollectionStatistics contains the number of documents and additional statistical information about a collection.
 type CollectionStatistics struct {
 	//The number of documents currently present in the collection.
-	Count int64 `arango:"count,omitempty"`
+	Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 	// The maximal size of a journal or datafile in bytes.
-	JournalSize int64 `arango:"journalSize,omitempty"`
+	JournalSize int64 `arango:"journalSize,omitempty" json:"journalSize,omitempty"`
 	Figures     struct {
 		DataFiles struct {
 			// The number of datafiles.
-			Count int64 `arango:"count,omitempty"`
+			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The total filesize of datafiles (in bytes).
-			FileSize int64 `arango:"fileSize,omitempty"`
+			FileSize int64 `arango:"fileSize,omitempty" json:"fileSize,omitempty"`
 		} `arango:"datafiles"`
 		// The number of markers in the write-ahead log for this collection that have not been transferred to journals or datafiles.
 		UncollectedLogfileEntries int64 `arango:"uncollectedLogfileEntries,omitempty"`
@@ -177,57 +177,57 @@ type CollectionStatistics struct {
 		DocumentReferences int64 `arango:"documentReferences,omitempty"`
 		CompactionStatus   struct {
 			// The action that was performed when the compaction was last run for the collection. This information can be used for debugging compaction issues.
-			Message string `arango:"message,omitempty"`
+			Message string `arango:"message,omitempty" json:"message,omitempty"`
 			// The point in time the compaction for the collection was last executed. This information can be used for debugging compaction issues.
-			Time time.Time `arango:"time,omitempty"`
-		} `arango:"compactionStatus"`
+			Time time.Time `arango:"time,omitempty" json:"time,omitempty"`
+		} `arango:"compactionStatus" json:"compactionStatus"`
 		Compactors struct {
 			// The number of compactor files.
-			Count int64 `arango:"count,omitempty"`
+			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The total filesize of all compactor files (in bytes).
-			FileSize int64 `arango:"fileSize,omitempty"`
-		} `arango:"compactors"`
+			FileSize int64 `arango:"fileSize,omitempty" json:"fileSize,omitempty"`
+		} `arango:"compactors" json:"compactors"`
 		Dead struct {
 			// The number of dead documents. This includes document versions that have been deleted or replaced by a newer version. Documents deleted or replaced that are contained the write-ahead log only are not reported in this figure.
-			Count int64 `arango:"count,omitempty"`
+			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The total number of deletion markers. Deletion markers only contained in the write-ahead log are not reporting in this figure.
-			Deletion int64 `arango:"deletion,omitempty"`
+			Deletion int64 `arango:"deletion,omitempty" json:"deletion,omitempty"`
 			// The total size in bytes used by all dead documents.
-			Size int64 `arango:"size,omitempty"`
-		} `arango:"dead"`
+			Size int64 `arango:"size,omitempty" json:"size,omitempty"`
+		} `arango:"dead" json:"dead"`
 		Indexes struct {
 			// The total number of indexes defined for the collection, including the pre-defined indexes (e.g. primary index).
-			Count int64 `arango:"count,omitempty"`
+			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The total memory allocated for indexes in bytes.
-			Size int64 `arango:"size,omitempty"`
-		} `arango:"indexes"`
+			Size int64 `arango:"size,omitempty" json:"size,omitempty"`
+		} `arango:"indexes" json:"indexes"`
 		ReadCache struct {
 			// The number of revisions of this collection stored in the document revisions cache.
-			Count int64 `arango:"count,omitempty"`
+			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The memory used for storing the revisions of this collection in the document revisions cache (in bytes). This figure does not include the document data but only mappings from document revision ids to cache entry locations.
-			Size int64 `arango:"size,omitempty"`
-		} `arango:"readcache"`
+			Size int64 `arango:"size,omitempty" json:"size,omitempty"`
+		} `arango:"readcache" json:"readcache"`
 		// An optional string value that contains information about which object type is at the head of the collection's cleanup queue. This information can be used for debugging compaction and unload issues.
-		WaitingFor string `arango:"waitingFor,omitempty"`
+		WaitingFor string `arango:"waitingFor,omitempty" json:"waitingFor,omitempty"`
 		Alive      struct {
 			// The number of currently active documents in all datafiles and journals of the collection. Documents that are contained in the write-ahead log only are not reported in this figure.
-			Count int64 `arango:"count,omitempty"`
+			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The total size in bytes used by all active documents of the collection. Documents that are contained in the write-ahead log only are not reported in this figure.
-			Size int64 `arango:"size,omitempty"`
-		} `arango:"alive"`
+			Size int64 `arango:"size,omitempty" json:"size,omitempty"`
+		} `arango:"alive" json:"alive"`
 		// The tick of the last marker that was stored in a journal of the collection. This might be 0 if the collection does not yet have a journal.
-		LastTick int64 `arango:"lastTick,omitempty"`
+		LastTick int64 `arango:"lastTick,omitempty" json:"lastTick,omitempty"`
 		Journals struct {
 			// The number of journal files.
-			Count int64 `arango:"count,omitempty"`
+			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The total filesize of all journal files (in bytes).
-			FileSize int64 `arango:"fileSize,omitempty"`
-		} `arango:"journals"`
+			FileSize int64 `arango:"fileSize,omitempty" json:"fileSize,omitempty"`
+		} `arango:"journals" json:"journals"`
 		Revisions struct {
 			// The number of revisions of this collection managed by the storage engine.
-			Count int64 `arango:"count,omitempty"`
+			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The memory used for storing the revisions of this collection in the storage engine (in bytes). This figure does not include the document data but only mappings from document revision ids to storage engine datafile positions.
-			Size int64 `arango:"size,omitempty"`
-		} `arango:"revisions"`
-	} `arango:"figures"`
+			Size int64 `arango:"size,omitempty" json:"size,omitempty"`
+		} `arango:"revisions" json:"revisions"`
+	} `arango:"figures" json:"figures"`
 }

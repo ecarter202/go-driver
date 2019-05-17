@@ -70,7 +70,7 @@ func (d *database) GraphExists(ctx context.Context, name string) (bool, error) {
 }
 
 type getGraphsResponse struct {
-	Graphs []DocumentMeta `arango:"graphs,omitempty"`
+	Graphs []DocumentMeta `arango:"graphs,omitempty" json:"graphs,omitempty"`
 }
 
 // Graphs returns a list of all graphs in the database.
@@ -102,21 +102,21 @@ func (d *database) Graphs(ctx context.Context) ([]Graph, error) {
 }
 
 type createGraphOptions struct {
-	Name                    string                        `arango:"name"`
-	OrphanVertexCollections []string                      `arango:"orphanCollections,omitempty"`
-	EdgeDefinitions         []EdgeDefinition              `arango:"edgeDefinitions,omitempty"`
-	IsSmart                 bool                          `arango:"isSmart,omitempty"`
-	Options                 *createGraphAdditionalOptions `arango:"options,omitempty"`
+	Name                    string                        `arango:"name" json:"name"`
+	OrphanVertexCollections []string                      `arango:"orphanCollections,omitempty" json:"orphanCollections,omitempty"`
+	EdgeDefinitions         []EdgeDefinition              `arango:"edgeDefinitions,omitempty" json:"edgeDefinitions,omitempty"`
+	IsSmart                 bool                          `arango:"isSmart,omitempty" json:"isSmart,omitempty"`
+	Options                 *createGraphAdditionalOptions `arango:"options,omitempty" json:"options,omitempty"`
 }
 
 type createGraphAdditionalOptions struct {
 	// SmartGraphAttribute is the attribute name that is used to smartly shard the vertices of a graph.
 	// Every vertex in this Graph has to have this attribute.
 	// Cannot be modified later.
-	SmartGraphAttribute string `arango:"smartGraphAttribute,omitempty"`
+	SmartGraphAttribute string `arango:"smartGraphAttribute,omitempty" json:"smartGraphAttribute,omitempty"`
 	// NumberOfShards is the number of shards that is used for every collection within this graph.
 	// Cannot be modified later.
-	NumberOfShards int `arango:"numberOfShards,omitempty"`
+	NumberOfShards int `arango:"numberOfShards,omitempty" json:"numberOfShards,omitempty"`
 }
 
 // CreateGraph creates a new graph with given name and options, and opens a connection to it.

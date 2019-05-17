@@ -28,23 +28,23 @@ import (
 )
 
 type indexData struct {
-	ID          string   `arango:"id,omitempty"`
-	Type        string   `arango:"type"`
-	Fields      []string `arango:"fields,omitempty"`
-	Unique      *bool    `arango:"unique,omitempty"`
-	Deduplicate *bool    `arango:"deduplicate,omitempty"`
-	Sparse      *bool    `arango:"sparse,omitempty"`
-	GeoJSON     *bool    `arango:"geoJson,omitempty"`
-	MinLength   int      `arango:"minLength,omitempty"`
+	ID          string   `arango:"id,omitempty" json:"id,omitempty"`
+	Type        string   `arango:"type" json:"type"`
+	Fields      []string `arango:"fields,omitempty" json:"fields,omitempty"`
+	Unique      *bool    `arango:"unique,omitempty" json:"unique,omitempty"`
+	Deduplicate *bool    `arango:"deduplicate,omitempty" json:"deduplicate,omitempty"`
+	Sparse      *bool    `arango:"sparse,omitempty" json:"sparse,omitempty"`
+	GeoJSON     *bool    `arango:"geoJson,omitempty" json:"geoJson,omitempty"`
+	MinLength   int      `arango:"minLength,omitempty" json:"minLength,omitempty"`
 }
 
 type genericIndexData struct {
-	ID   string `arango:"id,omitempty"`
-	Type string `arango:"type"`
+	ID   string `arango:"id,omitempty" json:"id,omitempty"`
+	Type string `arango:"type" json:"type"`
 }
 
 type indexListResponse struct {
-	Indexes []genericIndexData `arango:"indexes,omitempty"`
+	Indexes []genericIndexData `arango:"indexes,omitempty" json:"indexes,omitempty"`
 }
 
 // Index opens a connection to an existing index within the collection.

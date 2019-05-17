@@ -47,10 +47,10 @@ type user struct {
 }
 
 type userData struct {
-	Name           string     `arango:"user,omitempty"`
-	Active         bool       `arango:"active,omitempty"`
-	Extra          *RawObject `arango:"extra,omitempty"`
-	ChangePassword bool       `arango:"changePassword,omitempty"`
+	Name           string     `arango:"user,omitempty" json:"user,omitempty"`
+	Active         bool       `arango:"active,omitempty" json:"active,omitempty"`
+	Extra          *RawObject `arango:"extra,omitempty" json:"extra,omitempty"`
+	ChangePassword bool       `arango:"changePassword,omitempty" json:"changePassword,omitempty"`
 }
 
 // relPath creates the relative path to this index (`_api/user/<name>`)
@@ -153,7 +153,7 @@ func (u *user) Replace(ctx context.Context, options UserOptions) error {
 }
 
 type userAccessibleDatabasesResponse struct {
-	Result map[string]string `arango:"result"`
+	Result map[string]string `arango:"result" json:"result"`
 }
 
 // AccessibleDatabases returns a list of all databases that can be accessed by this user.
@@ -198,7 +198,7 @@ func (u *user) SetDatabaseAccess(ctx context.Context, db Database, access Grant)
 		return WithStack(err)
 	}
 	input := struct {
-		Grant Grant `arango:"grant"`
+		Grant Grant `arango:"grant" json:"grant"`
 	}{
 		Grant: access,
 	}
@@ -216,7 +216,7 @@ func (u *user) SetDatabaseAccess(ctx context.Context, db Database, access Grant)
 }
 
 type getAccessResponse struct {
-	Result string `arango:"result"`
+	Result string `arango:"result" json:"result"`
 }
 
 // GetDatabaseAccess gets the access rights for this user to the given database.

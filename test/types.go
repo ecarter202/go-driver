@@ -23,19 +23,19 @@
 package test
 
 type UserDoc struct {
-	Name string `arango:"name"`
-	Age  int    `arango:"age"`
+	Name string `arango:"name" json:"name"`
+	Age  int    `arango:"age" json:"age"`
 }
 
 type UserDocWithKey struct {
-	Key  string `arango:"_key"`
-	Name string `arango:"name"`
-	Age  int    `arango:"age"`
+	Key  string `arango:"_key" json:"_key"`
+	Name string `arango:"name" json:"name"`
+	Age  int    `arango:"age" json:"age"`
 }
 
 type Account struct {
-	ID   string   `arango:"id"`
-	User *UserDoc `arango:"user"`
+	ID   string   `arango:"id" json:"id"`
+	User *UserDoc `arango:"user" json:"user"`
 }
 
 type Book struct {
@@ -43,26 +43,26 @@ type Book struct {
 }
 
 type RouteEdge struct {
-	From     string `arango:"_from,omitempty"`
-	To       string `arango:"_to,omitempty"`
-	Distance int    `arango:"distance,omitempty"`
+	From     string `arango:"_from,omitempty" json:"_from,omitempty"`
+	To       string `arango:"_to,omitempty" json:"_to,omitempty"`
+	Distance int    `arango:"distance,omitempty" json:"distance,omitempty"`
 }
 
 type RouteEdgeWithKey struct {
-	Key      string `arango:"_key"`
-	From     string `arango:"_from,omitempty"`
-	To       string `arango:"_to,omitempty"`
-	Distance int    `arango:"distance,omitempty"`
+	Key      string `arango:"_key" json:"_key"`
+	From     string `arango:"_from,omitempty" json:"_from,omitempty"`
+	To       string `arango:"_to,omitempty" json:"_to,omitempty"`
+	Distance int    `arango:"distance,omitempty" json:"distance,omitempty"`
 }
 
 type RelationEdge struct {
-	From string `arango:"_from,omitempty"`
-	To   string `arango:"_to,omitempty"`
-	Type string `arango:"type,omitempty"`
+	From string `arango:"_from,omitempty" json:"_from,omitempty"`
+	To   string `arango:"_to,omitempty" json:"_to,omitempty"`
+	Type string `arango:"type,omitempty" json:"type,omitempty"`
 }
 
 type AccountEdge struct {
-	From string   `arango:"_from,omitempty"`
-	To   string   `arango:"_to,omitempty"`
-	User *UserDoc `arango:"user"`
+	From string   `arango:"_from,omitempty" json:"_from,omitempty"`
+	To   string   `arango:"_to,omitempty" json:"_to,omitempty"`
+	User *UserDoc `arango:"user" json:"user"`
 }

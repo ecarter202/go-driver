@@ -24,9 +24,9 @@ package driver
 
 // DocumentMeta contains all meta data used to identifier a document.
 type DocumentMeta struct {
-	Key string     `arango:"_key,omitempty"`
-	ID  DocumentID `arango:"_id,omitempty"`
-	Rev string     `arango:"_rev,omitempty"`
+	Key string     `arango:"_key,omitempty" json:"_key,omitempty"`
+	ID  DocumentID `arango:"_id,omitempty" json:"_id,omitempty"`
+	Rev string     `arango:"_rev,omitempty" json:"_rev,omitempty"`
 }
 
 // validateKey returns an error if the given key is empty otherwise invalid.

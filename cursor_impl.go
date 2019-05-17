@@ -76,13 +76,13 @@ type cursorStats struct {
 }
 
 type cursorData struct {
-	Count   int64        `arango:"count,omitempty"`   // the total number of result documents available (only available if the query was executed with the count attribute set)
-	ID      string       `arango:"id"`                // id of temporary cursor created on the server (optional, see above)
-	Result  []*RawObject `arango:"result,omitempty"`  // an array of result documents (might be empty if query has no results)
-	HasMore bool         `arango:"hasMore,omitempty"` // A boolean indicator whether there are more results available for the cursor on the server
+	Count   int64        `arango:"count,omitempty" json:"count,omitempty"`   // the total number of result documents available (only available if the query was executed with the count attribute set)
+	ID      string       `arango:"id" json:"id"`                // id of temporary cursor created on the server (optional, see above)
+	Result  []*RawObject `arango:"result,omitempty" json:"result,omitempty"`  // an array of result documents (might be empty if query has no results)
+	HasMore bool         `arango:"hasMore,omitempty" json:"hasMore,omitempty"` // A boolean indicator whether there are more results available for the cursor on the server
 	Extra   struct {
-		Stats cursorStats `arango:"stats,omitempty"`
-	} `arango:"extra"`
+		Stats cursorStats `arango:"stats,omitempty" json:"stats,omitempty"`
+	} `arango:"extra" json:"extra"`
 }
 
 // relPath creates the relative path to this cursor (`_db/<db-name>/_api/cursor`)

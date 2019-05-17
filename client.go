@@ -90,14 +90,14 @@ type ClientConfig struct {
 // VersionInfo describes the version of a database server.
 type VersionInfo struct {
 	// This will always contain "arango"
-	Server string `arango:"server,omitempty"`
+	Server string `arango:"server,omitempty" json:"server,omitempty"`
 	//  The server version string. The string has the format "major.minor.sub".
 	// Major and minor will be numeric, and sub may contain a number or a textual version.
-	Version Version `arango:"version,omitempty"`
+	Version Version `arango:"version,omitempty" json:"version,omitempty"`
 	// Type of license of the server
-	License string `arango:"license,omitempty"`
+	License string `arango:"license,omitempty" json:"license,omitempty"`
 	// Optional additional details. This is returned only if the context is configured using WithDetails.
-	Details map[string]interface{} `arango:"details,omitempty"`
+	Details map[string]interface{} `arango:"details,omitempty" json:"details,omitempty"`
 }
 
 func (v *VersionInfo) IsEnterprise() bool {

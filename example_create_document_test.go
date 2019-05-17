@@ -34,8 +34,8 @@ import (
 )
 
 type Book struct {
-	Title   string `arango:"title"`
-	NoPages int    `arango:"no_pages"`
+	Title   string `arango:"title" json:"title"`
+	NoPages int    `arango:"no_pages" json:"no_pages"`
 }
 
 func Example_createDocument() {
