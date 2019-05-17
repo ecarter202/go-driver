@@ -267,18 +267,18 @@ func (c *collection) Truncate(ctx context.Context) error {
 
 type collectionPropertiesInternal struct {
 	CollectionInfo
-	WaitForSync bool  `arango:"waitForSync,omitempty"`
-	DoCompact   bool  `arango:"doCompact,omitempty"`
-	JournalSize int64 `arango:"journalSize,omitempty"`
+	WaitForSync bool  `arango:"waitForSync,omitempty" json:"waitForSync,omitempty"`
+	DoCompact   bool  `arango:"doCompact,omitempty" json:"doCompact,omitempty"`
+	JournalSize int64 `arango:"journalSize,omitempty" json:"journalSize,omitempty"`
 	KeyOptions  struct {
-		Type          KeyGeneratorType `arango:"type,omitempty"`
-		AllowUserKeys bool             `arango:"allowUserKeys,omitempty"`
-	} `arango:"keyOptions,omitempty"`
-	NumberOfShards     int               `arango:"numberOfShards,omitempty"`
-	ShardKeys          []string          `arango:"shardKeys,omitempty"`
-	ReplicationFactor  replicationFactor `arango:"replicationFactor,omitempty"`
-	SmartJoinAttribute string            `arango:"smartJoinAttribute,omitempty"`
-	ShardingStrategy   ShardingStrategy  `arango:"shardingStrategy,omitempty"`
+		Type          KeyGeneratorType `arango:"type,omitempty" json:"type,omitempty"`
+		AllowUserKeys bool             `arango:"allowUserKeys,omitempty" json:"allowUserKeys,omitempty"`
+	} `arango:"keyOptions,omitempty" json:"keyOptions,omitempty"`
+	NumberOfShards     int               `arango:"numberOfShards,omitempty" json:"numberOfShards,omitempty"`
+	ShardKeys          []string          `arango:"shardKeys,omitempty" json:"shardKeys,omitempty"`
+	ReplicationFactor  replicationFactor `arango:"replicationFactor,omitempty" json:"replicationFactor,omitempty"`
+	SmartJoinAttribute string            `arango:"smartJoinAttribute,omitempty" json:"smartJoinAttribute,omitempty"`
+	ShardingStrategy   ShardingStrategy  `arango:"shardingStrategy,omitempty" json:"shardingStrategy,omitempty"`
 }
 
 func (p *collectionPropertiesInternal) asExternal() CollectionProperties {
@@ -341,9 +341,9 @@ func (p *CollectionProperties) UnmarshalJSON(d []byte) error {
 }
 
 type setCollectionPropertiesOptionsInternal struct {
-	WaitForSync       *bool             `arango:"waitForSync,omitempty"`
-	JournalSize       int64             `arango:"journalSize,omitempty"`
-	ReplicationFactor replicationFactor `arango:"replicationFactor,omitempty"`
+	WaitForSync       *bool             `arango:"waitForSync,omitempty" json:"waitForSync,omitempty"`
+	JournalSize       int64             `arango:"journalSize,omitempty" json:"journalSize,omitempty"`
+	ReplicationFactor replicationFactor `arango:"replicationFactor,omitempty" json:"replicationFactor,omitempty"`
 }
 
 func (p *SetCollectionPropertiesOptions) asInternal() setCollectionPropertiesOptionsInternal {
