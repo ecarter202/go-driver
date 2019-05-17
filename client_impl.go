@@ -116,11 +116,11 @@ func (c *client) autoSynchronizeEndpoints(interval time.Duration) {
 }
 
 type clusterEndpointsResponse struct {
-	Endpoints []clusterEndpoint `json:"endpoints,omitempty"`
+	Endpoints []clusterEndpoint `arango:"endpoints,omitempty"`
 }
 
 type clusterEndpoint struct {
-	Endpoint string `json:"endpoint,omitempty"`
+	Endpoint string `arango:"endpoint,omitempty"`
 }
 
 // clusterEndpoints returns the endpoints of a cluster.

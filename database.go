@@ -68,13 +68,13 @@ type Database interface {
 // DatabaseInfo contains information about a database
 type DatabaseInfo struct {
 	// The identifier of the database.
-	ID string `json:"id,omitempty"`
+	ID string `arango:"id,omitempty"`
 	// The name of the database.
-	Name string `json:"name,omitempty"`
+	Name string `arango:"name,omitempty"`
 	// The filesystem path of the database.
-	Path string `json:"path,omitempty"`
+	Path string `arango:"path,omitempty"`
 	// If true then the database is the _system database.
-	IsSystem bool `json:"isSystem,omitempty"`
+	IsSystem bool `arango:"isSystem,omitempty"`
 }
 
 // EngineType indicates type of database engine being used.
@@ -91,5 +91,5 @@ func (t EngineType) String() string {
 
 // EngineInfo contains information about the database engine being used.
 type EngineInfo struct {
-	Type EngineType `json:"name"`
+	Type EngineType `arango:"name"`
 }

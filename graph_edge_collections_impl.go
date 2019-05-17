@@ -29,8 +29,8 @@ import (
 
 type getGraphResponse struct {
 	Graph struct {
-		EdgeDefinitions []EdgeDefinition `json:"edgeDefinitions,omitempty"`
-	} `json:"graph"`
+		EdgeDefinitions []EdgeDefinition `arango:"edgeDefinitions,omitempty"`
+	} `arango:"graph"`
 }
 
 // EdgeCollection opens a connection to an existing edge-collection within the graph.

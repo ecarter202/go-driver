@@ -159,7 +159,7 @@ func decodeObjectFields(objValue reflect.Value, body map[string]*json.RawMessage
 	for i := 0; i != objValue.NumField(); i++ {
 		f := objValueType.Field(i)
 		if f.Anonymous && f.Type.Kind() == reflect.Struct {
-			jsonName := strings.Split(f.Tag.Get("json"), ",")[0]
+			jsonName := strings.Split(f.Tag.Get("arango"), ",")[0]
 			if jsonName == "-" {
 				continue
 			}
@@ -169,7 +169,7 @@ func decodeObjectFields(objValue reflect.Value, body map[string]*json.RawMessage
 			}
 		} else {
 			// Decode individual field
-			jsonName := strings.Split(f.Tag.Get("json"), ",")[0]
+			jsonName := strings.Split(f.Tag.Get("arango"), ",")[0]
 			if jsonName == "" {
 				jsonName = f.Name
 			} else if jsonName == "-" {

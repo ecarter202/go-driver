@@ -28,23 +28,23 @@ import (
 )
 
 type indexData struct {
-	ID          string   `json:"id,omitempty"`
-	Type        string   `json:"type"`
-	Fields      []string `json:"fields,omitempty"`
-	Unique      *bool    `json:"unique,omitempty"`
-	Deduplicate *bool    `json:"deduplicate,omitempty"`
-	Sparse      *bool    `json:"sparse,omitempty"`
-	GeoJSON     *bool    `json:"geoJson,omitempty"`
-	MinLength   int      `json:"minLength,omitempty"`
+	ID          string   `arango:"id,omitempty"`
+	Type        string   `arango:"type"`
+	Fields      []string `arango:"fields,omitempty"`
+	Unique      *bool    `arango:"unique,omitempty"`
+	Deduplicate *bool    `arango:"deduplicate,omitempty"`
+	Sparse      *bool    `arango:"sparse,omitempty"`
+	GeoJSON     *bool    `arango:"geoJson,omitempty"`
+	MinLength   int      `arango:"minLength,omitempty"`
 }
 
 type genericIndexData struct {
-	ID   string `json:"id,omitempty"`
-	Type string `json:"type"`
+	ID   string `arango:"id,omitempty"`
+	Type string `arango:"type"`
 }
 
 type indexListResponse struct {
-	Indexes []genericIndexData `json:"indexes,omitempty"`
+	Indexes []genericIndexData `arango:"indexes,omitempty"`
 }
 
 // Index opens a connection to an existing index within the collection.

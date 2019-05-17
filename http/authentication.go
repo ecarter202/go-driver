@@ -90,13 +90,13 @@ type jwtAuthentication struct {
 }
 
 type jwtOpenRequest struct {
-	UserName string `json:"username"`
-	Password string `json:"password"`
+	UserName string `arango:"username"`
+	Password string `arango:"password"`
 }
 
 type jwtOpenResponse struct {
-	Token              string `json:"jwt"`
-	MustChangePassword bool   `json:"must_change_password,omitempty"`
+	Token              string `arango:"jwt"`
+	MustChangePassword bool   `arango:"must_change_password,omitempty"`
 }
 
 // Prepare is called before the first request of the given connection is made.

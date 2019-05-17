@@ -60,29 +60,29 @@ type cursor struct {
 
 type cursorStats struct {
 	// The total number of data-modification operations successfully executed.
-	WritesExecutedInt int64 `json:"writesExecuted,omitempty"`
+	WritesExecutedInt int64 `arango:"writesExecuted,omitempty"`
 	// The total number of data-modification operations that were unsuccessful
-	WritesIgnoredInt int64 `json:"writesIgnored,omitempty"`
+	WritesIgnoredInt int64 `arango:"writesIgnored,omitempty"`
 	// The total number of documents iterated over when scanning a collection without an index.
-	ScannedFullInt int64 `json:"scannedFull,omitempty"`
+	ScannedFullInt int64 `arango:"scannedFull,omitempty"`
 	// The total number of documents iterated over when scanning a collection using an index.
-	ScannedIndexInt int64 `json:"scannedIndex,omitempty"`
+	ScannedIndexInt int64 `arango:"scannedIndex,omitempty"`
 	// The total number of documents that were removed after executing a filter condition in a FilterNode
-	FilteredInt int64 `json:"filtered,omitempty"`
+	FilteredInt int64 `arango:"filtered,omitempty"`
 	// The total number of documents that matched the search condition if the query's final LIMIT statement were not present.
-	FullCountInt int64 `json:"fullCount,omitempty"`
+	FullCountInt int64 `arango:"fullCount,omitempty"`
 	// Query execution time (wall-clock time). value will be set from the outside
 	ExecutionTimeInt float64 `json:"executionTime,omitempty"`
 }
 
 type cursorData struct {
-	Count   int64        `json:"count,omitempty"`   // the total number of result documents available (only available if the query was executed with the count attribute set)
-	ID      string       `json:"id"`                // id of temporary cursor created on the server (optional, see above)
-	Result  []*RawObject `json:"result,omitempty"`  // an array of result documents (might be empty if query has no results)
-	HasMore bool         `json:"hasMore,omitempty"` // A boolean indicator whether there are more results available for the cursor on the server
+	Count   int64        `arango:"count,omitempty"`   // the total number of result documents available (only available if the query was executed with the count attribute set)
+	ID      string       `arango:"id"`                // id of temporary cursor created on the server (optional, see above)
+	Result  []*RawObject `arango:"result,omitempty"`  // an array of result documents (might be empty if query has no results)
+	HasMore bool         `arango:"hasMore,omitempty"` // A boolean indicator whether there are more results available for the cursor on the server
 	Extra   struct {
-		Stats cursorStats `json:"stats,omitempty"`
-	} `json:"extra"`
+		Stats cursorStats `arango:"stats,omitempty"`
+	} `arango:"extra"`
 }
 
 // relPath creates the relative path to this cursor (`_db/<db-name>/_api/cursor`)

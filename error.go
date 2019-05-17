@@ -33,10 +33,10 @@ import (
 
 // ArangoError is a Go error with arangodb specific error information.
 type ArangoError struct {
-	HasError     bool   `json:"error"`
-	Code         int    `json:"code"`
-	ErrorNum     int    `json:"errorNum"`
-	ErrorMessage string `json:"errorMessage"`
+	HasError     bool   `arango:"error"`
+	Code         int    `arango:"code"`
+	ErrorNum     int    `arango:"errorNum"`
+	ErrorMessage string `arango:"errorMessage"`
 }
 
 // Error returns the error message of an ArangoError.

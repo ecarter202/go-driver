@@ -70,7 +70,7 @@ func (d *database) CollectionExists(ctx context.Context, name string) (bool, err
 }
 
 type getCollectionResponse struct {
-	Result []CollectionInfo `json:"result,omitempty"`
+	Result []CollectionInfo `arango:"result,omitempty"`
 }
 
 // Collections returns a list of all collections in the database.
@@ -102,23 +102,23 @@ func (d *database) Collections(ctx context.Context) ([]Collection, error) {
 }
 
 type createCollectionOptionsInternal struct {
-	JournalSize          int                   `json:"journalSize,omitempty"`
-	ReplicationFactor    replicationFactor     `json:"replicationFactor,omitempty"`
-	WaitForSync          bool                  `json:"waitForSync,omitempty"`
-	DoCompact            *bool                 `json:"doCompact,omitempty"`
-	IsVolatile           bool                  `json:"isVolatile,omitempty"`
-	ShardKeys            []string              `json:"shardKeys,omitempty"`
-	NumberOfShards       int                   `json:"numberOfShards,omitempty"`
-	IsSystem             bool                  `json:"isSystem,omitempty"`
-	Type                 CollectionType        `json:"type,omitempty"`
-	IndexBuckets         int                   `json:"indexBuckets,omitempty"`
-	KeyOptions           *CollectionKeyOptions `json:"keyOptions,omitempty"`
-	DistributeShardsLike string                `json:"distributeShardsLike,omitempty"`
-	IsSmart              bool                  `json:"isSmart,omitempty"`
-	SmartGraphAttribute  string                `json:"smartGraphAttribute,omitempty"`
-	Name                 string                `json:"name"`
-	SmartJoinAttribute   string                `json:"smartJoinAttribute,omitempty"`
-	ShardingStrategy     ShardingStrategy      `json:"shardingStrategy,omitempty"`
+	JournalSize          int                   `arango:"journalSize,omitempty"`
+	ReplicationFactor    replicationFactor     `arango:"replicationFactor,omitempty"`
+	WaitForSync          bool                  `arango:"waitForSync,omitempty"`
+	DoCompact            *bool                 `arango:"doCompact,omitempty"`
+	IsVolatile           bool                  `arango:"isVolatile,omitempty"`
+	ShardKeys            []string              `arango:"shardKeys,omitempty"`
+	NumberOfShards       int                   `arango:"numberOfShards,omitempty"`
+	IsSystem             bool                  `arango:"isSystem,omitempty"`
+	Type                 CollectionType        `arango:"type,omitempty"`
+	IndexBuckets         int                   `arango:"indexBuckets,omitempty"`
+	KeyOptions           *CollectionKeyOptions `arango:"keyOptions,omitempty"`
+	DistributeShardsLike string                `arango:"distributeShardsLike,omitempty"`
+	IsSmart              bool                  `arango:"isSmart,omitempty"`
+	SmartGraphAttribute  string                `arango:"smartGraphAttribute,omitempty"`
+	Name                 string                `arango:"name"`
+	SmartJoinAttribute   string                `arango:"smartJoinAttribute,omitempty"`
+	ShardingStrategy     ShardingStrategy      `arango:"shardingStrategy,omitempty"`
 }
 
 // CreateCollection creates a new collection with given name and options, and opens a connection to it.

@@ -99,7 +99,7 @@ func (c *collection) Count(ctx context.Context) (int64, error) {
 		return 0, WithStack(err)
 	}
 	var data struct {
-		Count int64 `json:"count,omitempty"`
+		Count int64 `arango:"count,omitempty"`
 	}
 	if err := resp.ParseBody("", &data); err != nil {
 		return 0, WithStack(err)
@@ -143,7 +143,7 @@ func (c *collection) Revision(ctx context.Context) (string, error) {
 		return "", WithStack(err)
 	}
 	var data struct {
-		Revision string `json:"revision,omitempty"`
+		Revision string `arango:"revision,omitempty"`
 	}
 	if err := resp.ParseBody("", &data); err != nil {
 		return "", WithStack(err)
@@ -197,7 +197,7 @@ func (c *collection) Load(ctx context.Context) error {
 		return WithStack(err)
 	}
 	opts := struct {
-		Count bool `json:"count"`
+		Count bool `arango:"count"`
 	}{
 		Count: false,
 	}
@@ -267,18 +267,18 @@ func (c *collection) Truncate(ctx context.Context) error {
 
 type collectionPropertiesInternal struct {
 	CollectionInfo
-	WaitForSync bool  `json:"waitForSync,omitempty"`
-	DoCompact   bool  `json:"doCompact,omitempty"`
-	JournalSize int64 `json:"journalSize,omitempty"`
+	WaitForSync bool  `arango:"waitForSync,omitempty"`
+	DoCompact   bool  `arango:"doCompact,omitempty"`
+	JournalSize int64 `arango:"journalSize,omitempty"`
 	KeyOptions  struct {
-		Type          KeyGeneratorType `json:"type,omitempty"`
-		AllowUserKeys bool             `json:"allowUserKeys,omitempty"`
-	} `json:"keyOptions,omitempty"`
-	NumberOfShards     int               `json:"numberOfShards,omitempty"`
-	ShardKeys          []string          `json:"shardKeys,omitempty"`
-	ReplicationFactor  replicationFactor `json:"replicationFactor,omitempty"`
-	SmartJoinAttribute string            `json:"smartJoinAttribute,omitempty"`
-	ShardingStrategy   ShardingStrategy  `json:"shardingStrategy,omitempty"`
+		Type          KeyGeneratorType `arango:"type,omitempty"`
+		AllowUserKeys bool             `arango:"allowUserKeys,omitempty"`
+	} `arango:"keyOptions,omitempty"`
+	NumberOfShards     int               `arango:"numberOfShards,omitempty"`
+	ShardKeys          []string          `arango:"shardKeys,omitempty"`
+	ReplicationFactor  replicationFactor `arango:"replicationFactor,omitempty"`
+	SmartJoinAttribute string            `arango:"smartJoinAttribute,omitempty"`
+	ShardingStrategy   ShardingStrategy  `arango:"shardingStrategy,omitempty"`
 }
 
 func (p *collectionPropertiesInternal) asExternal() CollectionProperties {
@@ -341,9 +341,9 @@ func (p *CollectionProperties) UnmarshalJSON(d []byte) error {
 }
 
 type setCollectionPropertiesOptionsInternal struct {
-	WaitForSync       *bool             `json:"waitForSync,omitempty"`
-	JournalSize       int64             `json:"journalSize,omitempty"`
-	ReplicationFactor replicationFactor `json:"replicationFactor,omitempty"`
+	WaitForSync       *bool             `arango:"waitForSync,omitempty"`
+	JournalSize       int64             `arango:"journalSize,omitempty"`
+	ReplicationFactor replicationFactor `arango:"replicationFactor,omitempty"`
 }
 
 func (p *SetCollectionPropertiesOptions) asInternal() setCollectionPropertiesOptionsInternal {
@@ -360,12 +360,12 @@ func (p *SetCollectionPropertiesOptions) fromInternal(i *setCollectionProperties
 	p.ReplicationFactor = int(i.ReplicationFactor)
 }
 
-// MarshalJSON converts SetCollectionPropertiesOptions into json
+// MarshalJSON converts SetCollectionPropertiesOptions into arango
 func (p *SetCollectionPropertiesOptions) MarshalJSON() ([]byte, error) {
 	return json.Marshal(p.asInternal())
 }
 
-// UnmarshalJSON loads SetCollectionPropertiesOptions from json
+// UnmarshalJSON loads SetCollectionPropertiesOptions from arango
 func (p *SetCollectionPropertiesOptions) UnmarshalJSON(d []byte) error {
 	var internal setCollectionPropertiesOptionsInternal
 	if err := json.Unmarshal(d, &internal); err != nil {

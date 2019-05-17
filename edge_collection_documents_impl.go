@@ -576,7 +576,7 @@ func getKeyFromDocument(doc reflect.Value) (string, error) {
 		fieldCount := structType.NumField()
 		for i := 0; i < fieldCount; i++ {
 			f := structType.Field(i)
-			tagParts := strings.Split(f.Tag.Get("json"), ",")
+			tagParts := strings.Split(f.Tag.Get("arango"), ",")
 			if tagParts[0] == "_key" {
 				// We found the _key field
 				keyVal := doc.Field(i)
