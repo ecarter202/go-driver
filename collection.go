@@ -170,11 +170,11 @@ type CollectionStatistics struct {
 			Count int64 `arango:"count,omitempty" json:"count,omitempty"`
 			// The total filesize of datafiles (in bytes).
 			FileSize int64 `arango:"fileSize,omitempty" json:"fileSize,omitempty"`
-		} `arango:"datafiles"`
+		} `arango:"datafiles" json:"datafiles"`
 		// The number of markers in the write-ahead log for this collection that have not been transferred to journals or datafiles.
-		UncollectedLogfileEntries int64 `arango:"uncollectedLogfileEntries,omitempty"`
+		UncollectedLogfileEntries int64 `arango:"uncollectedLogfileEntries,omitempty" json:"uncollectedLogfileEntries,omitempty"`
 		// The number of references to documents in datafiles that JavaScript code currently holds. This information can be used for debugging compaction and unload issues.
-		DocumentReferences int64 `arango:"documentReferences,omitempty"`
+		DocumentReferences int64 `arango:"documentReferences,omitempty" json:"documentReferences,omitempty"`
 		CompactionStatus   struct {
 			// The action that was performed when the compaction was last run for the collection. This information can be used for debugging compaction issues.
 			Message string `arango:"message,omitempty" json:"message,omitempty"`
