@@ -24,7 +24,6 @@ package http
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -35,6 +34,7 @@ import (
 	"strings"
 
 	driver "github.com/ecarter202/go-driver"
+	"github.com/ecarter202/go-driver/internal/json"
 )
 
 // httpRequest implements driver.Request using standard golang http requests.

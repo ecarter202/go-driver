@@ -60,19 +60,19 @@ type cursor struct {
 
 type cursorStats struct {
 	// The total number of data-modification operations successfully executed.
-	WritesExecutedInt int64 `arango:"writesExecuted,omitempty"`
+	WritesExecutedInt int64 `arango:"writesExecuted,omitempty" json:"writesExecuted,omitempty"`
 	// The total number of data-modification operations that were unsuccessful
-	WritesIgnoredInt int64 `arango:"writesIgnored,omitempty"`
+	WritesIgnoredInt int64 `arango:"writesIgnored,omitempty" json:"writesIgnored,omitempty"`
 	// The total number of documents iterated over when scanning a collection without an index.
-	ScannedFullInt int64 `arango:"scannedFull,omitempty"`
+	ScannedFullInt int64 `arango:"scannedFull,omitempty" json:"scannedFull,omitempty"`
 	// The total number of documents iterated over when scanning a collection using an index.
-	ScannedIndexInt int64 `arango:"scannedIndex,omitempty"`
+	ScannedIndexInt int64 `arango:"scannedIndex,omitempty" json:"scannedIndex,omitempty"`
 	// The total number of documents that were removed after executing a filter condition in a FilterNode
-	FilteredInt int64 `arango:"filtered,omitempty"`
+	FilteredInt int64 `arango:"filtered,omitempty" json:"filtered,omitempty"`
 	// The total number of documents that matched the search condition if the query's final LIMIT statement were not present.
-	FullCountInt int64 `arango:"fullCount,omitempty"`
+	FullCountInt int64 `arango:"fullCount,omitempty" json:"fullCount,omitempty"`
 	// Query execution time (wall-clock time). value will be set from the outside
-	ExecutionTimeInt float64 `json:"executionTime,omitempty"`
+	ExecutionTimeInt float64 `arango:"executionTime,omitempty" json:"executionTime,omitempty"`
 }
 
 type cursorData struct {
